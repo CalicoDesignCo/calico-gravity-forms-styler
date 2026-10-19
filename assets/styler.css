@@ -1,0 +1,8 @@
+/* Only structural safeguards. Visual settings are emitted by Elementor per instance. */
+.cgfs { min-width: 0; }
+.cgfs .gform_wrapper { max-width: 100%; }
+.cgfs *, .cgfs *::before, .cgfs *::after { box-sizing: border-box; }
+.cgfs .gfield input:not([type=checkbox]):not([type=radio]):not([type=hidden]):not([type=submit]):not([type=button]),
+.cgfs .gfield select, .cgfs .gfield textarea { max-width: 100%; }
+.cgfs .gfield textarea { resize: vertical; }
+.cgfs-editor-notice { padding: 16px; border: 1px solid #d5d8dc; background: #f8f9fa; color: #333; }
