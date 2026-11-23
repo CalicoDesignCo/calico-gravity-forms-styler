@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Calico Gravity Forms Styler for Elementor
  * Description: Elementor styling controls for native Gravity Forms, including individual field overrides.
- * Version: 0.1.2
+ * Version: 0.1.3
  * Author: Calico
  * Requires at least: 6.5
  * Requires PHP: 7.4
@@ -15,7 +15,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'CGFS_VERSION', '0.1.2' );
+define( 'CGFS_VERSION', '0.1.3' );
 define( 'CGFS_PATH', plugin_dir_path( __FILE__ ) );
 define( 'CGFS_URL', plugin_dir_url( __FILE__ ) );
 
@@ -34,7 +34,18 @@ final class CGFS_Plugin {
         add_action( 'elementor/widgets/register', [ __CLASS__, 'register_widget' ] );
         add_action( 'wp_enqueue_scripts', [ __CLASS__, 'assets' ], 20 );
         add_action( 'elementor/preview/enqueue_styles', [ __CLASS__, 'assets' ] );
+        add_action( 'elementor/init', [ __CLASS__, 'refresh_generated_css' ] );
         add_filter( 'gform_field_css_class', [ __CLASS__, 'field_classes' ], 10, 3 );
+    }
+
+    public static function refresh_generated_css() {
+        if ( get_option( 'cgfs_generated_css_version' ) === CGFS_VERSION ) { return; }
+        $elementor = \Elementor\Plugin::instance();
+        if ( isset( $elementor->files_manager ) && is_callable( [ $elementor->files_manager, 'clear_cache' ] ) ) {
+            // Recompile saved control values against new selectors without changing designs.
+            $elementor->files_manager->clear_cache();
+            update_option( 'cgfs_generated_css_version', CGFS_VERSION, false );
+        }
     }
 
     public static function notice() {

@@ -2,7 +2,7 @@
 Contributors: calico
 Requires at least: 6.5
 Requires PHP: 7.4
-Stable tag: 0.1.2
+Stable tag: 0.1.3
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
@@ -42,6 +42,9 @@ If a conflict occurs, deactivate this styling plugin and restore the previous ZI
 Download the installable release asset named calico-gravity-forms-styler.zip. GitHub's Source code archives are intended for developers and are not the tested installable package.
 
 == Changelog ==
+= 0.1.3 =
+Explicit Sub-input gap now removes percentage edge padding from 2.5-theme Name sub-inputs and applies a real column gap; Orbital continues to use its native CSS spacing variable. Explicit Footer top spacing now clears vertical theme padding on form and page footers. Explicit Row gap removes only empty invisible-CAPTCHA grid rows from layout, preserving CAPTCHA markup, inline/visible badges, descriptions and validation. Unset spacing controls retain theme defaults; saved control IDs and responsive values are preserved.
+
 = 0.1.2 =
 Added independent Hide field labels and Hide sublabels switches under Content > Gravity Form. Defaults preserve existing forms. Hidden labels retain their native accessible associations; choice and consent text remain visible. Added a native GitHub updater with cached public stable-release metadata and version-specific installable assets.
 

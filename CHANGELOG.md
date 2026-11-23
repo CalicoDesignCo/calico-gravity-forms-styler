@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.3 - 2026-11-23
+
+- Apply explicit Sub-input gap values to 2.5-theme Name fields, including single-part wrappers and multipart input spacing.
+- Make explicit Footer top spacing remove native vertical padding on form and page footers.
+- Remove the empty invisible-CAPTCHA grid row when Row gap is explicit; retain CAPTCHA nodes and restore normal flow for validation, descriptions, labels, visible CAPTCHA and inline badges.
+- Preserve inherited theme spacing when controls are blank and keep existing saved control identifiers and values.
+- Refresh Elementor generated CSS once per plugin version so saved settings use the new selectors.
+- Add separate-theme responsive frontend and native Elementor preview regression coverage.
+
+
 ## 0.1.2 - 2026-11-22
 
 - Add native GitHub-backed WordPress updates using public stable metadata and pinned release assets. Earlier installations need a one-time manual upload.

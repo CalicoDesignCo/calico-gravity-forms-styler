@@ -2,7 +2,7 @@
 
 Style an existing Gravity Form through an Elementor widget, with separate designs per widget and individual field overrides. Elementor Pro is not required.
 
-**Version: 0.1.2.** Local WordPress and Elementor integration checks use a Gravity Forms test double. This plugin does not promise styling access to every third-party form component.
+**Version: 0.1.3.** Local WordPress and Elementor integration checks use a Gravity Forms test double. This plugin does not promise styling access to every third-party form component.
 
 ## Features
 
@@ -14,6 +14,8 @@ Style an existing Gravity Form through an Elementor widget, with separate design
 - Typography, colors, borders, radius, padding, margin and shadows where relevant; responsive typography and dimensions.
 - Individual field overrides using the Gravity Forms field ID, scoped to the current widget.
 - Independent Hide field labels and Hide sublabels switches under Content → Gravity Form. Both default to off; labels remain available to screen readers. Choice and consent text stays visible.
+
+Explicit Sub-input gap values remove the 2.5 theme’s Name-wrapper percentage padding and apply the chosen gap. Explicit Footer top spacing values also remove vertical footer padding. Explicit Row gap values remove an empty invisible-CAPTCHA grid row while retaining CAPTCHA and restoring space for errors, labels, descriptions and inline badges. Blank controls inherit the theme; numeric zero is an override. Saved Elementor CSS is refreshed once on upgrade without changing saved settings.
 
 Create fields, set columns, and configure logic, feeds, notifications and confirmations in Gravity Forms. This plugin delegates form output to Gravity Forms and supplies styling controls.
 
@@ -44,7 +46,9 @@ User-confirmed functionality was reported on October 19, 2026. The installed ver
 
 Local checks use PHP 8.3.33, WordPress 6.8.13 and Elementor 4.3.4 with an explicit Gravity Forms test double. They cover widget registration, dependency handling, native-render argument delegation, template asset discovery, field class isolation and Elementor CSS compilation. Browser fixture checks at 1200px and 390px cover scoped computed styles, an individual field override, focus borders, responsive textarea sizing and horizontal overflow.
 
-These checks do not prove real Gravity Forms editor behavior, entries, notifications, AJAX, conditional logic, file uploads, payments or installed add-ons. No production website has been independently verified with this release.
+The 0.1.3 spacing suite additionally exercises the native Elementor frontend and actual editor preview at 1200px, 768px and 390px, using separate 2.5/Orbital theme pages, Gravity Forms 3.2.1 public CSS and matching rendering fixtures. It checks blank, zero, nonzero and responsive spacing, single/multipart Names, both footers and CAPTCHA content guards. All 96 spacing combinations passed. These are layout checks with rendering fixtures, not complete Gravity Forms engine or CAPTCHA challenge tests. Modern browsers supporting CSS :has() are required for the empty-CAPTCHA-row safeguard.
+
+These checks do not prove the licensed Gravity Forms rendering engine, entries, notifications, AJAX, conditional logic, file uploads, payments or installed add-ons. No production website has been independently verified with this release.
 
 ## Updates and recovery
 

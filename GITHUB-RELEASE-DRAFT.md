@@ -1,18 +1,17 @@
-# Version 0.1.2
+# Version 0.1.3
 
-Regular release.
+Fix spacing consistency across the Gravity Forms 2.5 theme and Orbital.
 
-## Changes
+- Explicit Sub-input gap values remove 2.5-theme Name wrapper percentage padding and apply the requested spacing to single-part and multipart Names.
+- Explicit Footer top spacing also removes theme vertical padding on form and page footers.
+- Explicit Row gap removes empty invisible-CAPTCHA grid rows while retaining CAPTCHA markup and restoring normal flow for validation, descriptions, labels, visible CAPTCHA and inline badges.
+- Blank controls continue to inherit theme spacing. Saved settings and responsive control IDs are preserved; Elementor generated CSS refreshes once on upgrade.
+- GitHub-backed WordPress updates remain included.
 
-- Add separate **Hide field labels** and **Hide sublabels** controls under Elementor **Content → Gravity Form**. Both default off. Labels remain available to screen readers. Choice text, consent text and validation messages stay visible.
-- Add GitHub-backed WordPress updates for future stable releases, with cached metadata, version-pinned installable assets and no bundled token. Automatic updates stay under the administrator’s control.
+Validation: exact ZIP installed and activated on disposable WordPress 6.8.13 / PHP 8.3.33 with Elementor 4.3.4. Integration and updater checks passed. All 96 frontend/native Elementor preview layout combinations passed across both themes at 1200px, 768px and 390px, using Gravity Forms 3.2.1 public CSS and matching rendering fixtures. Real Gravity Forms submissions, Google CAPTCHA challenges and production upgrades were not tested.
 
-## Installation and updates
-
-**One-time manual upload required:** versions before this updater-enabled build cannot discover it automatically. Download `calico-gravity-forms-styler.zip`, then WordPress → Plugins → Add New → Upload Plugin → Replace the existing plugin. Future stable releases can appear under Dashboard → Updates → Check again.
+Download the installable `calico-gravity-forms-styler.zip` asset below. Existing updater-enabled installations can check Dashboard > Updates; earlier builds without the updater require one manual ZIP upload.
 
 Permanent download: https://github.com/CalicoDesignCo/calico-gravity-forms-styler/releases/latest/download/calico-gravity-forms-styler.zip
 
-## Validation and limits
-
-Local WordPress/Elementor checks cover registration, rendering arguments, generated CSS, all four label-visibility combinations and accessible names. Gravity Forms itself is represented by a test double; real submissions, AJAX, payments and add-ons are not independently verified. Updater validation uses stable/error metadata fixtures and a disposable WordPress upgrade; no production website is updated. Provider-owned payment and CAPTCHA components, floating datepickers and enhanced select popups retain their existing limits.
+SHA256: `019b015b778efd6f24ff72de9c797824229d2681bbdadd4582fc610f9e9071ed`
