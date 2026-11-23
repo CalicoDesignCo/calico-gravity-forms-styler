@@ -13,7 +13,7 @@ $version = $Matches[1]
 if ($header -notmatch ("define\( 'CGFS_VERSION', '" + [regex]::Escape($version) + "' \)")) { throw 'Runtime version mismatch' }
 $readme = Get-Content -LiteralPath (Join-Path $source 'readme.txt') -Raw
 if ($readme -notmatch ('Stable tag:\s*' + [regex]::Escape($version) + '\s')) { throw 'Readme version mismatch' }
-$allowed = @("$slug.php", 'includes/widget.php', 'assets/styler.css', 'readme.txt', 'LICENSE')
+$allowed = @("$slug.php", 'includes/widget.php', 'includes/class-cgfs-updater.php', 'assets/styler.css', 'readme.txt', 'LICENSE')
 $dist = Join-Path $projectRoot "dist\v$version"
 New-Item -ItemType Directory -Path $dist -Force | Out-Null
 $output = Join-Path $dist "$slug.zip"
