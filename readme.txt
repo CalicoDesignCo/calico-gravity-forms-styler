@@ -2,11 +2,11 @@
 Contributors: calico
 Requires at least: 6.5
 Requires PHP: 7.4
-Stable tag: 0.1.1
+Stable tag: 0.1.2
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
-Elementor controls for styling native Gravity Forms. Version 0.1.1 is a beta for staging evaluation, not a production-certified release.
+Elementor controls for styling native Gravity Forms, including optional field-label and sublabel visibility.
 
 == Installation ==
 1. Install and activate Elementor and your licensed Gravity Forms plugin. Elementor Pro is optional.
@@ -14,6 +14,7 @@ Elementor controls for styling native Gravity Forms. Version 0.1.1 is a beta for
 3. Edit a page with Elementor. Search for Calico Gravity Forms Styler and drag it onto the page.
 4. Choose an active form in Content. Use Style to customize its parts.
 5. For one-field changes, add an Individual field overrides row and enter its Gravity Forms field ID.
+6. Under Content > Gravity Form, use Hide field labels and Hide sublabels separately or together. Both default to off. Labels stay in the markup for screen readers; checkbox/radio choices and consent text remain visible. These options do not reveal labels already hidden in Gravity Forms itself.
 
 == Styling coverage ==
 Form container and gaps; title and description; labels, sub-labels and required indicators; descriptions and counters; text, number, email, date and other native inputs; selects and textareas; placeholders; hover, focus, disabled and error input states; checkbox/radio labels and controls; section titles and dividers; HTML fields; upload drop areas, rules, file lists and buttons; list fields; product prices and totals; errors; confirmations; submit, next, previous and save links; progress bars and page steps.
@@ -34,13 +35,16 @@ The editor displays the native form. Do not make test submissions in the editor:
 No global Gravity Forms CSS is disabled. Clearing a style setting returns to the installed form/theme styles. No form records, entries or Gravity Forms settings are changed. Uninstalling leaves Elementor page settings intact and removes the widget renderer until reinstalled.
 
 == Updates and recovery ==
-This version does not include a GitHub updater. To upgrade, upload the new installable ZIP through Plugins > Add New > Upload Plugin and choose to replace the existing plugin. Keep a backup before upgrading. The installed directory and widget identifiers remain the same as 0.1.0.
+Version 0.1.2 adds GitHub-backed updates through the standard WordPress Updates screen. Earlier versions (and the initial local 0.1.2 label-only build) need a one-time manual upload of this updater-enabled package. After installation, future stable releases can appear under Dashboard > Updates > Check again. WordPress controls automatic-update preferences; the plugin does not enable them. Keep a backup before upgrading.
 
 If a conflict occurs, deactivate this styling plugin and restore the previous ZIP. Deactivating it does not delete Gravity Forms entries or Elementor page settings; its widget output is unavailable until the plugin is active again. Avoid deleting the saved widget from your page during recovery.
 
 Download the installable release asset named calico-gravity-forms-styler.zip. GitHub's Source code archives are intended for developers and are not the tested installable package.
 
 == Changelog ==
+= 0.1.2 =
+Added independent Hide field labels and Hide sublabels switches under Content > Gravity Form. Defaults preserve existing forms. Hidden labels retain their native accessible associations; choice and consent text remain visible. Added a native GitHub updater with cached public stable-release metadata and version-specific installable assets.
+
 = 0.1.1 =
 Prepared for GitHub prerelease distribution: added the full GPL license, updated public documentation and recovery instructions, and standardized the installable asset filename. Widget behavior and saved control identifiers are unchanged from 0.1.0. Real Gravity Forms staging acceptance remains outstanding.
 

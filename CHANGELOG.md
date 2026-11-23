@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.2 - 2026-11-22
+
+- Add native GitHub-backed WordPress updates using public stable metadata and pinned release assets. Earlier installations need a one-time manual upload.
+
+- Add independent Hide field labels and Hide sublabels switches under Content > Gravity Form.
+- Preserve existing visibility by default and retain visually hidden labels for screen readers.
+- Keep choice/consent text visible and scope visibility to the selected widget.
+
 ## 0.1.1 - prerelease preparation
 
 - Include the complete GPL v2 license text and license URI.

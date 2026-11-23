@@ -1,30 +1,18 @@
-# Version 0.1.1
+# Version 0.1.2
 
-**Prerelease / beta:** use on staging before production. This is the first prepared GitHub package for Calico Gravity Forms Styler for Elementor.
-
-Style an existing Gravity Form through Elementor, including labels, inputs, choices, buttons, uploads, errors, confirmations and multi-page indicators. Individual field overrides allow different typography, colors and spacing within the same form.
+Regular release.
 
 ## Changes
 
-- Complete GPL license and public installation, update and recovery documentation.
-- Clean installable asset with a consistent filename: `calico-gravity-forms-styler.zip`.
-- Production allowlist and package/source integrity checks.
-- Widget behavior and saved identifiers remain unchanged from the 0.1.0 local beta.
+- Add separate **Hide field labels** and **Hide sublabels** controls under Elementor **Content → Gravity Form**. Both default off. Labels remain available to screen readers. Choice text, consent text and validation messages stay visible.
+- Add GitHub-backed WordPress updates for future stable releases, with cached metadata, version-pinned installable assets and no bundled token. Automatic updates stay under the administrator’s control.
 
-## Compatibility and limits
+## Installation and updates
 
-Targets WordPress 6.5+, PHP 7.4+, Elementor's classic widget system and Gravity Forms 2.7+ modern markup. Elementor Pro is optional; Gravity Forms is supplied separately. Atomic Editor compatibility is unverified.
+**One-time manual upload required:** versions before this updater-enabled build cannot discover it automatically. Download `calico-gravity-forms-styler.zip`, then WordPress → Plugins → Add New → Upload Plugin → Replace the existing plugin. Future stable releases can appear under Dashboard → Updates → Check again.
 
-Floating datepickers, enhanced-select popups, provider-hosted payment/CAPTCHA components and add-on-specific fields are not fully covered. This version has no GitHub updater; install and update by uploading the release ZIP through WordPress.
+Permanent download: https://github.com/CalicoDesignCo/calico-gravity-forms-styler/releases/latest/download/calico-gravity-forms-styler.zip
 
-## Validation
+## Validation and limits
 
-User-confirmed functionality was reported on October 19, 2026. The environment, installed version and individual test cases were not specified.
-
-The exact installable ZIP was extracted and activated through WordPress's plugin activation API on clean local WordPress 6.8.11 with PHP 8.3.33 and Elementor 4.3.4. PHP parsing, dependency handling, registration, native-render arguments, saved-template asset discovery, field override isolation and Elementor CSS compilation passed. Browser fixture checks passed at 1200px and 390px for generated CSS, focus state, individual field overrides, responsive textarea height, widget isolation and horizontal overflow.
-
-WordPress/Elementor integration and generated-CSS browser checks use an explicit Gravity Forms test double. Real submissions, notifications, AJAX, conditional logic, uploads and payment integrations still require staging verification. These are not claims of end-to-end Gravity Forms compatibility.
-
-## Install
-
-Download the attached `calico-gravity-forms-styler.zip`, then choose WordPress → Plugins → Add New → Upload Plugin → Activate. Use the attached asset rather than GitHub's Source code archives.
+Local WordPress/Elementor checks cover registration, rendering arguments, generated CSS, all four label-visibility combinations and accessible names. Gravity Forms itself is represented by a test double; real submissions, AJAX, payments and add-ons are not independently verified. Updater validation uses stable/error metadata fixtures and a disposable WordPress upgrade; no production website is updated. Provider-owned payment and CAPTCHA components, floating datepickers and enhanced select popups retain their existing limits.

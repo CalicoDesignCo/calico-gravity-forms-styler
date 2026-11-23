@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Calico Gravity Forms Styler for Elementor
  * Description: Elementor styling controls for native Gravity Forms, including individual field overrides.
- * Version: 0.1.1
+ * Version: 0.1.2
  * Author: Calico
  * Requires at least: 6.5
  * Requires PHP: 7.4
@@ -10,13 +10,17 @@
  * License: GPL-2.0-or-later
  * License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * Text Domain: calico-gravity-forms-styler
+ * Update URI: https://github.com/CalicoDesignCo/calico-gravity-forms-styler
  */
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'CGFS_VERSION', '0.1.1' );
+define( 'CGFS_VERSION', '0.1.2' );
 define( 'CGFS_PATH', plugin_dir_path( __FILE__ ) );
 define( 'CGFS_URL', plugin_dir_url( __FILE__ ) );
+
+require_once CGFS_PATH . 'includes/class-cgfs-updater.php';
+CGFS_Updater::register( __FILE__ );
 
 final class CGFS_Plugin {
     private static $visited = [];
