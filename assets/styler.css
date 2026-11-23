@@ -6,3 +6,25 @@
 .cgfs .gfield select, .cgfs .gfield textarea { max-width: 100%; }
 .cgfs .gfield textarea { resize: vertical; }
 .cgfs-editor-notice { padding: 16px; border: 1px solid #d5d8dc; background: #f8f9fa; color: #333; }
+
+/* Visually hide labels without removing accessible names or native associations.
+   Important declarations override saved Elementor typography/spacing controls. */
+.cgfs.cgfs-hide-labels .gfield_label:not(.gform-field-label--type-sub),
+.cgfs.cgfs-hide-sublabels .gform-field-label--type-sub,
+.cgfs.cgfs-hide-sublabels .ginput_complex > span > label,
+.cgfs.cgfs-hide-sublabels .ginput_complex > div > label {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    max-width: 1px !important;
+    max-height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    border: 0 !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    clip-path: inset(50%) !important;
+    white-space: nowrap !important;
+}
