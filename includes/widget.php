@@ -109,10 +109,45 @@ final class CGFS_Widget extends \Elementor\Widget_Base {
             'options' => [ '' => 'Default', 'start' => 'Start', 'center' => 'Center', 'end' => 'End' ],
             'selectors_dictionary' => [ 'start' => '0; margin-inline-end: auto', 'center' => 'auto; margin-inline-end: auto', 'end' => 'auto; margin-inline-end: 0' ],
             'selectors' => [ $root => 'margin-inline-start: {{VALUE}};' ] ] );
-        $this->size( 'row_gap', 'Row gap', $this->scope( '.gform_fields' ), 'row-gap' );
+        // A blank control emits no overrides. Numeric zero is an intentional value.
+        // Include a value token in each rule: the live editor otherwise emits static
+        // declarations even when the slider size is blank.
+        // Keep CAPTCHA mounted: take only its empty, invisible row out of grid flow.
+        // Error/description/label content restores the normal field immediately.
+        $empty_captcha = '.gfield--type-captcha.gfield--captcha-invisible'
+            . ':has(> .ginput_recaptcha[data-size="invisible"]:not([data-badge="inline"]))'
+            . ':not(.gfield_error):not(:has(.gfield_validation_message)):not(:has(.validation_message))'
+            . ':not(:has(.gfield_description:not(:empty))):not(:has(.gfield_label))';
+        $this->add_responsive_control( 'row_gap', [
+            'label' => 'Row gap', 'type' => C::SLIDER, 'size_units' => [ 'px', 'em', 'rem' ],
+            'range' => [ 'px' => [ 'min' => 0, 'max' => 150 ] ],
+            'description' => 'An explicit value also removes the empty grid row of invisible CAPTCHA. CAPTCHA and validation remain enabled.',
+            'selectors' => [
+                $this->scope( '.gform_fields' ) => 'row-gap: {{SIZE}}{{UNIT}};',
+                $this->scope( '.gfield--type-captcha.gfield--captcha-invisible' ) => '--cgfs-row-gap: {{SIZE}}{{UNIT}}; position: static; block-size: auto; inline-size: auto;',
+                $this->scope( '.gfield--type-captcha.gfield--captcha-invisible > .ginput_recaptcha' ) => '--cgfs-row-gap: {{SIZE}}{{UNIT}}; block-size: auto; inline-size: auto;',
+                $this->scope( $empty_captcha ) => '--cgfs-row-gap: {{SIZE}}{{UNIT}}; position: absolute;',
+            ],
+        ] );
         $this->size( 'column_gap', 'Column gap', $this->scope( '.gform_fields' ), 'column-gap' );
-        $this->size( 'inner_gap', 'Sub-input gap', $wrapper, '--gf-field-gap-x' );
-        $this->size( 'footer_gap', 'Footer top spacing', $this->scope( '.gform_footer, .gform_page_footer' ), 'margin-top' );
+        $this->add_responsive_control( 'inner_gap', [
+            'label' => 'Sub-input gap', 'type' => C::SLIDER, 'size_units' => [ 'px', 'em', 'rem' ],
+            'range' => [ 'px' => [ 'min' => 0, 'max' => 150 ] ],
+            'description' => 'Controls Orbital sub-input spacing and 2.5-theme Name spacing, including the outer percentage padding. Leave blank to inherit the form theme.',
+            'selectors' => [
+                $wrapper => '--gf-field-gap-x: {{SIZE}}{{UNIT}};',
+                $this->scope( '.gform_wrapper.gravity-theme .ginput_complex.ginput_container_name' ) => 'column-gap: {{SIZE}}{{UNIT}};',
+                $this->scope( '.gform_wrapper.gravity-theme .ginput_complex.ginput_container_name > span' ) => '--cgfs-sub-input-gap: {{SIZE}}{{UNIT}}; padding-inline: 0;',
+            ],
+        ] );
+        $this->add_responsive_control( 'footer_gap', [
+            'label' => 'Footer top spacing', 'type' => C::SLIDER, 'size_units' => [ 'px', 'em', 'rem' ],
+            'range' => [ 'px' => [ 'min' => 0, 'max' => 150 ] ],
+            'description' => 'Sets the top margin and clears theme vertical footer padding, so zero means no added top or bottom padding. Leave blank to inherit the form theme.',
+            'selectors' => [
+                $this->scope( '.gform_footer, .gform_page_footer' ) => 'margin-top: {{SIZE}}{{UNIT}}; margin-block-start: {{SIZE}}{{UNIT}}; padding-block: 0;',
+            ],
+        ] );
         $this->add_control( 'layout_note', [ 'type' => C::RAW_HTML, 'raw' => 'Field columns and order follow the Gravity Forms editor. Spacing controls target modern Gravity Forms markup; legacy list layouts may differ.' ] );
         $this->end_controls_section();
 
