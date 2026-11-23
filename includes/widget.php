@@ -82,6 +82,18 @@ final class CGFS_Widget extends \Elementor\Widget_Base {
         $this->add_control( 'form_id', [ 'label' => 'Form', 'type' => C::SELECT, 'options' => $forms ] );
         $this->add_control( 'show_title', [ 'label' => 'Show form title', 'type' => C::SWITCHER, 'default' => 'yes' ] );
         $this->add_control( 'show_description', [ 'label' => 'Show form description', 'type' => C::SWITCHER, 'default' => 'yes' ] );
+        $this->add_control( 'hide_field_labels', [
+            'label' => esc_html__( 'Hide field labels', 'calico-gravity-forms-styler' ),
+            'type' => C::SWITCHER,
+            'default' => '',
+            'description' => esc_html__( 'Visually hide field labels and group legends in this widget. Screen readers can still read them. Choice and consent text stays visible.', 'calico-gravity-forms-styler' ),
+        ] );
+        $this->add_control( 'hide_sublabels', [
+            'label' => esc_html__( 'Hide sublabels', 'calico-gravity-forms-styler' ),
+            'type' => C::SWITCHER,
+            'default' => '',
+            'description' => esc_html__( 'Visually hide sublabels such as First, Last and address parts. Screen readers can still read them.', 'calico-gravity-forms-styler' ),
+        ] );
         $this->add_control( 'ajax', [ 'label' => 'AJAX submission', 'type' => C::SWITCHER, 'default' => 'yes' ] );
         $this->add_control( 'form_theme', [ 'label' => 'Form theme', 'type' => C::SELECT, 'default' => '',
             'options' => [ '' => 'Use Gravity Forms default', 'orbital' => 'Orbital', 'gravity-theme' => 'Gravity Forms 2.5' ] ] );
@@ -253,7 +265,10 @@ final class CGFS_Widget extends \Elementor\Widget_Base {
             $styles = wp_styles();
             wp_print_styles( array_diff( $styles->queue, $styles->done ) );
         }
-        echo '<div class="cgfs">';
+        $classes = [ 'cgfs' ];
+        if ( 'yes' === ( $settings['hide_field_labels'] ?? '' ) ) { $classes[] = 'cgfs-hide-labels'; }
+        if ( 'yes' === ( $settings['hide_sublabels'] ?? '' ) ) { $classes[] = 'cgfs-hide-sublabels'; }
+        echo '<div class="' . esc_attr( implode( ' ', $classes ) ) . '">';
         // Keep native rendering, validation, nonce, accessibility, conditional logic and submission intact.
         echo $markup; // Native Gravity Forms HTML; escaping would break form markup and initialization.
         echo '</div>';
